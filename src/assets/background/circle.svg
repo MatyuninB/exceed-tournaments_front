@@ -1,0 +1,19 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  version="1.1"
+  xmlns-xlink="http://www.w3.org/1999/xlink"
+  xmlns-svgjs="http://svgjs.com/svgjs"
+  width="1920"
+  height="1200"
+  preserveAspectRatio="none"
+  viewBox="0 0 1920 1200"
+>
+  <g mask='url("#SvgjsMask1081")' fill="none">
+    <circle
+      r="100"
+      cx="438.63"
+      cy="776.12"
+      fill="rgba(36, 58, 126, 1)"
+    ></circle>
+  </g>
+</svg>

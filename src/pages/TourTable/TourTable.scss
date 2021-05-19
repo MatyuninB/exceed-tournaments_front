@@ -1,0 +1,58 @@
+.tourTable {
+  max-width: 1170px;
+  width: 100%;
+  margin: 0 auto;
+}
+input {
+  margin-top: 25px;
+  width: 290px;
+  padding: 10px 10px;
+  border-radius: 20px;
+  border: 3px solid #f35f51;
+  outline: none;
+  margin-bottom: 30px;
+  box-shadow: 0px 4px 0px 0px #243a7e;
+}
+select {
+  margin-top: 25px;
+  width: 290px;
+  padding: 10px 10px;
+  border-radius: 20px;
+  border: 3px solid #f35f51;
+  outline: none;
+  margin-bottom: 30px;
+  box-shadow: 0px 4px 0px 0px #243a7e;
+}
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.modalContent {
+  overflow: auto !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px 0px;
+  height: 100px; /* высота нашего блока */
+}
+.tableModal {
+  height: 600px; /* высота нашего блока */
+  overflow: auto !important;
+  .tableModal__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 25px;
+  }
+}
+h2 {
+  font-size: 25px;
+  color: #243a7e;
+  margin-right: 15px;
+  // text-shadow: 5px 5px 20px #333;
+  i {
+    color: #f35f51;
+    font-style: normal;
+  }
+}

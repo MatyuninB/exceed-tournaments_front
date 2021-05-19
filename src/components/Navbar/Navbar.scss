@@ -1,0 +1,117 @@
+.navbar {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  background-color: white;
+  border-bottom-left-radius: 20px;
+  color: #424242;
+  border-bottom-right-radius: 20px;
+  -webkit-box-shadow: 1px 7px 8px -5px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 1px 7px 8px -5px rgba(34, 60, 80, 0.2);
+  box-shadow: 1px 7px 8px -5px rgba(34, 60, 80, 0.2);
+  .navbar__content {
+    max-width: 1170px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0px;
+    img {
+      width: 150px;
+      // filter: brightness(0) invert(1);
+      animation: effect3 2s ease-in-out;
+    }
+    .navbar__content_nav {
+      width: 25%;
+      span {
+        cursor: pointer;
+        animation: effect2 1s ease-in-out;
+        display: flex;
+        img {
+          width: 15px;
+          transition: 0.2s;
+          margin-left: 10px;
+        }
+      }
+    }
+    .navbar__content_auth {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 25%;
+      animation: effect1 1s ease-in-out;
+      img {
+        width: 25px;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      span:hover {
+        color: #243a7e;
+      }
+    }
+  }
+}
+.navbar__content_nav-dropdown {
+  // animation: effect2 1s ease-in-out;
+  border-radius: 20px;
+  position: relative;
+  z-index: 1;
+  width: 45%;
+  display: flex;
+  background-color: #243a7e;
+  color: white;
+  justify-content: flex-start;
+  transform: translateY(-100px);
+  transition: 0.5s;
+  width: 100%;
+  padding: 15px;
+  -webkit-box-shadow: 0px 4px 0px 0px #f35f51;
+  box-shadow: 0px 4px 0px 0px #f35f51;
+  .content {
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    span {
+      // margin-right: 125px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    span:hover {
+      color: #f35f51;
+    }
+  }
+}
+.vision {
+  transform: translateX(0px);
+}
+
+@keyframes effect1 {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes effect2 {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes effect3 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
