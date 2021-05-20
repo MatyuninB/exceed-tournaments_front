@@ -1,0 +1,32 @@
+.section1 {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #424242;
+  margin-top: auto;
+  font-weight: 200;
+
+  text-shadow: 2px 2px 6px #333;
+  h2 {
+    font-size: 120px;
+    font-weight: 200;
+    span {
+      font-size: 120px;
+
+      color: #f35f51;
+    }
+  }
+  span {
+    font-size: 78px;
+  }
+  a {
+    margin-top: 20px;
+    img {
+      width: 90px;
+      fill: #f35f51;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.section2 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  // background-size: contain;
+  padding-top: 150px;
+  .section2__info {
+    padding: 15px;
+    border-radius: 25px;
+    box-shadow: 0px 0px 8px 1px;
+    margin-left: 15px;
+  background-color: white;
+  text-align: left;
+
+    h2 {
+      font-size: 65px;
+      color: #243a7e;
+      // text-shadow: 5px 5px 20px #333;
+      i {
+        color: #f35f51;
+        font-style: normal;
+      }
+    }
+    p {
+      padding-left: 20px;
+      text-align: left;
+      font-size: 26px;
+    }
+  }
+}

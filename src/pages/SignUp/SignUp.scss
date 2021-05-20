@@ -1,0 +1,46 @@
+.register {
+  display: flex;
+  justify-content: center;
+}
+
+input,
+select {
+  width: 290px;
+  padding: 10px 10px;
+  border-radius: 20px;
+  border: 3px solid #f35f51;
+  outline: none;
+  margin-bottom: 10px;
+  box-shadow: 0px 4px 0px 0px #243a7e;
+}
+
+.btn {
+  position: relative;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 25px;
+  border-radius: 20px;
+  color: white;
+  text-transform: uppercase;
+  background-color: #f35f51;
+  font-weight: 500;
+  box-shadow: 0px 6px 0px 0px #243a7e;
+  transition: 0.2s;
+  animation: effect3 1s ease-in-out;
+}
+.btn:active {
+  background-color: #f7766b;
+  box-shadow: 0px 4px 0px 0px #243a7e;
+  top: 2px;
+}
+@keyframes effect3 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
