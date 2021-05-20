@@ -168,6 +168,7 @@ const TourTable = () => {
             <div style={{ width: "100%" }}>
               {arr.map((item, index) => (
                 <div
+                  key={`verdict${index}`}
                   style={{
                     border: "3px solid #243a7e",
                     borderRadius: "25px",
@@ -427,6 +428,7 @@ const TourTable = () => {
           </div>
           {marks.map((item, index) => (
             <div
+              key={`mark${index}`}
               style={{
                 border: "3px solid #243a7e",
                 borderRadius: "25px",
@@ -608,7 +610,8 @@ const TourTable = () => {
                 {rows.sort((a, b) => {
                   if(b.userId === authInfo._id) return 1;
                   if(a.userId === authInfo._id) return -1;
-                  if(a.score > b.score) {
+                  if(b.score === '-') return -1;
+                  if(parseInt(a.score) > parseInt(b.score)) {
                     return -1;
                   } else {
                     return 1;

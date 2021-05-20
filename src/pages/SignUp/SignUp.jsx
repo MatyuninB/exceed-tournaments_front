@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./SignUp.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setEvents } from "../../redux/actions/eventsAction";
 
 const SignUp = () => {
   const [login, setLogin] = useState("");
@@ -11,7 +12,16 @@ const SignUp = () => {
   const [err, setErr] = useState("");
   const [office, setOffice] = useState("Греческая");
   const [image, setImage] = useState("");
+  const dispatch = useDispatch()
   const authInfo = useSelector((state) => state.auth.authInfo);
+  const tournaments = useSelector(state => state.events.events)
+
+  const changeTournamentStatus = (publicID) => {
+    axios.get(`https://dark-torch-268518.appspot.com/tourStatus?publicID=${publicID}`, {
+      headers: { auth: localStorage.getItem("token") },
+    }).then(() => dispatch(setEvents())).catch(err => console.log(err))
+    
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +33,6 @@ const SignUp = () => {
     data.role = formData.get("role");
     data.office = formData.get("office");
     const image = formData.get("image");
-    console.log(image);
 
     axios
       .post("https://dark-torch-268518.appspot.com/create_user", data)
@@ -62,7 +71,26 @@ const SignUp = () => {
 
   return (
     <div className="register">
-      <>
+      <div style={{margin: '5% 0 0 5%'}}>
+        <h2>Open tournament</h2>
+        {
+          tournaments.map((e, i) => {
+            return (
+              <div key={`tour${i}`} className='singup-tornament' style={{padding: '5px 10px', background: '#fff',borderRadius: '24px', margin: '0 0 20px 0'}}>
+                <p style={{fontSize: '20px'}}>{e.title} <span style={e.status ? {color: 'green', fontWeight: 600} : {color: 'red', fontWeight: 600}}>{e.status ? 'active' : 'disabled'}</span> </p>
+                <button
+                  onClick={() => changeTournamentStatus(e.publicID)} 
+                  className="btn" 
+                  type="submit"
+                >
+                  Submit
+                </button>
+              </div>
+            );
+          })
+        }
+      </div>
+      <div>
         {authInfo.admin === true ? (
           <>
             <p>{err && err}</p>
@@ -75,6 +103,7 @@ const SignUp = () => {
               }}
               onSubmit={(e) => handleSubmit(e)}
             >
+              <h2>New user</h2>
               <input
                 name="image"
                 type="file"
@@ -130,7 +159,7 @@ const SignUp = () => {
             </form>
           </>
         ) : null}
-      </>
+      </div>
     </div>
   );
 };

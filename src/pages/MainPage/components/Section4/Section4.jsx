@@ -11,7 +11,7 @@ const Section4 = ({ content }) => {
         <div  className="rules">
           {content.rules &&
             content.benchmarks.map((item, index) => (
-              <p>
+              <p key={`rule${index}`}>
                 <i style={{ fontWeight: "bold" }}>{"// "} </i>
                 {item}
               </p>

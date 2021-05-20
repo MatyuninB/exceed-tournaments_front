@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import "./Profile.scss";
 import { setAuthCheck, setProfileInfo } from "../../redux/actions/authAction";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/Button/Button";
 import axios from "axios";
-import { SettingsPowerRounded } from "@material-ui/icons";
+import "./Profile.scss";
+
 const Profile = () => {
   const dispatch = useDispatch();
   const profileInfo = useSelector((state) => state.auth.profileInfo);
@@ -60,7 +60,6 @@ const Profile = () => {
         })
         .catch(function (err) {});
     } else {
-      console.log('click')
       setErr("Name can't be empty");
       const clear = () => {setErr('')};
       setTimeout(clear, 5000);
@@ -74,16 +73,23 @@ const Profile = () => {
   return (
     <div className="profile">
       <div className="profile__left">
-        <img
-          style={{
-            width: "250px",
-            height: "250px",
-            borderRadius: "50%",
-            boxShadow: "4px 0px 0px 0px #f7766b,-5px 0px 0px 0px #243a7e",
-          }}
-          src={(image && image) || profileInfo.image}
-          alt={(image && image) || profileInfo.image}
-        />
+        <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              width: "250px",
+              height: "250px",
+              overflow: 'hidden',
+              borderRadius: "50%",
+              boxShadow: "4px 0px 0px 0px #f7766b,-5px 0px 0px 0px #243a7e",
+              }}>
+          <img
+            style={{
+              height: "250px",
+            }}
+            src={(image && image) || profileInfo.image}
+            alt={(image && image) || profileInfo.image}
+          />
+        </div>
         <div className="profile__left_btns">
           {image && (
             <Button
@@ -105,7 +111,7 @@ const Profile = () => {
             onChange={(e) => handleImage(e)}
             style={{ display: "none" }}
           />
-          {!image && <label for="input__file">change avatar</label>}
+          {!image && <label htmlFor="input__file">change avatar</label>}
           {!editShow && (
             <Button
               style={{ marginRight: "15px" }}

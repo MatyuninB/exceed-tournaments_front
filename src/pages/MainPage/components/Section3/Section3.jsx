@@ -12,7 +12,7 @@ const Section3 = ({ content }) => {
         <div className="rules">
           {content.rules &&
             content.rules.map((item, index) => (
-              <p>
+              <p key={`rule${index}`}>
                 <i style={{ fontWeight: "bold" }}>{'// '} </i>
                 {item}
               </p>

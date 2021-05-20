@@ -20,7 +20,7 @@ const Navbar = () => {
   const isAuth = useSelector((state) => state.auth.auth);
   const name = useSelector((state) => state.auth.profileInfo.username);
   const authInfo = useSelector((state) => state.auth.authInfo);
-  console.log(authInfo, 888);
+
   return (
     <>
       <div className="navbar">
@@ -90,6 +90,7 @@ const Navbar = () => {
         <div className="content">
           {events.map((item, index) => (
             <Link
+              key={`tour-link${index}`}
               to={`/${item.publicID}`}
               onClick={() => {
                 dispatch(setMainPage(item.publicID));

@@ -12,6 +12,7 @@ const Login = () => {
     username: "",
     password: "",
   });
+  const [err, setErr] = useState('');
   const auth = (event) => {
     event.preventDefault();
     axios
@@ -26,7 +27,11 @@ const Login = () => {
         history.push("/");
       })
       .catch(function (err) {
-        console.log("q");
+        if(err) {
+          setErr('Wrong login or password.');
+          const clear = () => {setErr('')}
+          setTimeout(clear, 10000);
+        }
       });
   };
 
@@ -36,6 +41,7 @@ const Login = () => {
         <i>{"{"}</i>
         Log In<i>{"}"}</i>
       </h2>
+      {err && <p style={{color: 'red'}}>{err}</p>}
       <form className="form__login" onSubmit={(event) => auth(event)}>
         <input
           value={login.username}

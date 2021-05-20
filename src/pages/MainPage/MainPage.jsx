@@ -1,19 +1,18 @@
 import React, { useEffect, useRef, useState} from "react";
-import "./MainPage.scss";
 import AOS from "aos";
-import "aos/dist/aos.css"; // You can also use <link> for styles
+import { useSelector } from "react-redux";
+import { Parallax } from "react-scroll-parallax";
+import YouTube from "react-youtube";
 import Section2 from "./components/Section2/Section2";
 import Section3 from "./components/Section3/Section3";
 import Section1 from "./components/Section1/Section1";
 import Button from "../../components/Button/Button";
-import YouTube from "react-youtube";
-import { useSelector } from "react-redux";
 import Section4 from "./components/Section4/Section4";
-import { Parallax } from "react-scroll-parallax";
 import star from '../../assets/pack-svgs/star.svg';
-import laptop from '../../assets/pack-svgs/laptop.svg';
 import code from '../../assets/pack-svgs/code.svg';
-import plane from '../../assets/pack-svgs/plane.png';
+import plane from '../../assets/pack-svgs/plane.svg';
+import "./MainPage.scss";
+import "aos/dist/aos.css"; 
 
 const MainPage = () => {
   const [buttonProps, setButtonProps] = useState({})
@@ -21,17 +20,14 @@ const MainPage = () => {
   const id = useSelector((state) => state.events.publicId);
   const main = useRef();
   const firstContainer = useRef();
-  let firstHeigth = 1000;
   const opts = {
     height: "600",
     width: "100%",
   };
 
-  useEffect(() => {
-    firstHeigth = firstContainer.current.offsetHeight;
-  }, [firstHeigth]);
   
   useEffect(() => {
+    const firstHeigth = firstContainer.current.offsetHeight;  
     AOS.init({
       offset: 150,
       delay: 0,
@@ -45,7 +41,7 @@ const MainPage = () => {
         document.body.offsetHeight, document.documentElement.offsetHeight,
         document.body.clientHeight, document.documentElement.clientHeight
       );
-      console.log(scroll , maxScroll-2000)
+
       if(
         scroll > firstHeigth
         && scroll < maxScroll-1500
@@ -60,12 +56,13 @@ const MainPage = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div className="mainPage" ref={main}>
-      <Parallax y={[100, 200]} x={[70, -1000]} tagOuter="figure" styleOuter={{position:'absolute',top: '80%', right: "10%"}}>
-        <img style={{height:"80px", transform: "rotate(-125deg)"}}src={plane} alt='' />
+      <Parallax y={[100, 200]} x={[-1000, 70]} tagOuter="figure" styleOuter={{position:'absolute',top: '90%', left: "20%"}}>
+        <img style={{height:"80px", transform: "rotate(-25deg)"}}src={plane} alt='' />
       </Parallax>
       <Parallax y={[-50, 100]} x={[-10, 50]} tagOuter="figure" styleOuter={{position:'absolute', left: "5%"}}>
         <img src={star} alt='' />
@@ -80,7 +77,7 @@ const MainPage = () => {
         <Section2 content={data} />
       </div>
       <div data-aos="flip-down" className="section">
-        <YouTube videoId={data.video} opts={opts} />
+        {data.video && <YouTube videoId={data.video} opts={opts} />}
       </div>
       <div className="section three">
         <Section3 content={data} />
