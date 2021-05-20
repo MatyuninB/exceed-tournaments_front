@@ -607,7 +607,7 @@ const TourTable = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.sort((a, b) => {
+                {rows.sort( (a, b) => {
                   if(b.userId === authInfo._id) return 1;
                   if(a.userId === authInfo._id) return -1;
                   if(b.score === '-') return -1;
